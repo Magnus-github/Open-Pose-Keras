@@ -5,7 +5,7 @@ import time
 import numpy as np
 import util
 from config_reader_colab import config_reader_colab
-from scipy.ndimage.filters import gaussian_filter
+from scipy.ndimage import gaussian_filter
 from model import get_testing_model
 import pickle
 import itertools
@@ -376,11 +376,11 @@ class VideoProcessorSK(VideoProcessor):
 
 
     
-input_path = '/content/Open-Pose-Keras/sample_videos'
-keras_weights_file= '/content/Open-Pose-Keras/model/keras/model.h5'
-copy_to = '/content/drive/My Drive/colab_openpose/output_files/'
+input_path = '/Midgard/Data/tibbe/datasets/own/examples'
+keras_weights_file= '/Midgard/home/tibbe/thesis/degree_project/model/pose_estimation/model.h5'
+copy_to = '/Midgard/home/tibbe/thesis/Open-Pose-Keras/'
 
-videos = np.sort([fn for fn in glob.glob(input_path+'/*') if "Labeled" not in fn])
+videos = np.sort([fn for fn in glob.glob(input_path+'/*')])
 print('filenames:')
 print(videos)
 

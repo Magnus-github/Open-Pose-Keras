@@ -3,7 +3,7 @@ import numpy as np
 
 
 def config_reader_colab():
-    config = ConfigObj('/content/Open-Pose-Keras/config')
+    config = ConfigObj('config')
 
     param = config['param']
     model_id = param['modelID']
@@ -30,4 +30,4 @@ def config_reader_colab():
     return param, model
 
 if __name__ == "__main__":
-    config_reader()
+    config_reader_colab()

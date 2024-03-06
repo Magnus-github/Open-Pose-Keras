@@ -1,13 +1,13 @@
 from keras.models import Model
-from keras.layers.merge import Concatenate
+from keras.layers import Concatenate
 from keras.layers import Activation, Input, Lambda
-from keras.layers.convolutional import Conv2D
-from keras.layers.pooling import MaxPooling2D
-from keras.layers.merge import Multiply
-from keras.regularizers import l2
-from keras.initializers import random_normal, constant
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
+from keras.layers import Multiply
+from keras.regularizers import L2
+from keras.initializers import RandomNormal, Constant
 
-import re
+# import re
 
 
 #stages = 6
@@ -17,14 +17,14 @@ import re
 def relu(x): return Activation('relu')(x)
 
 def conv(x, nf, ks, name, weight_decay):
-    kernel_reg = l2(weight_decay[0]) if weight_decay else None
-    bias_reg = l2(weight_decay[1]) if weight_decay else None
+    kernel_reg = L2(weight_decay[0]) if weight_decay else None
+    bias_reg = L2(weight_decay[1]) if weight_decay else None
 
     x = Conv2D(nf, (ks, ks), padding='same', name=name,
                kernel_regularizer=kernel_reg,
                bias_regularizer=bias_reg,
-               kernel_initializer=random_normal(stddev=0.01),
-               bias_initializer=constant(0.0))(x)
+               kernel_initializer=RandomNormal(stddev=0.01),
+               bias_initializer=Constant(0.0))(x)
     return x
 
 def pooling(x, ks, st, name):
